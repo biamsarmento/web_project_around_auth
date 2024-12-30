@@ -1,6 +1,9 @@
+import { Routes, Route, Navigate, useNavigate, useLocation } from "react-router-dom";
 import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
+import Login from './components/Login';
+import Register from './components/Register'
 import React from 'react';
 import './index.css';
 import api from './utils/api';
@@ -113,25 +116,60 @@ function App() {
   return (
     <div className="page">
       <CurrentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar, isLoggedIn, setIsLoggedIn}}>
-        <Header></Header>
-        <Main 
-          onEditProfileClick={handleEditProfileClick}
-          onAddPlaceClick={handleAddPlaceClick}
-          onEditAvatarClick={handleEditAvatarClick}
-          onDeleteCardClick={handleDeleteCardClick}
-          isEditProfilePopupOpen={isEditProfilePopupOpen}
-          isAddPlacePopupOpen={isAddPlacePopupOpen}
-          isEditAvatarPopupOpen={isEditAvatarPopupOpen}
-          isDeleteCardPopupOpen={isDeleteCardPopupOpen}
-          selectedCard={selectedCard}
-          onClose={closeAllPopups}
-          onCardClick={handleCardClick}
-          cards={cards}
-          onCardLike={handleCardLike}
-          onCardDelete={handleCardDelete}
-          onAddPlaceSubmit={handleAddPlaceSubmit}
-        ></Main>
-        <Footer></Footer>
+        <Routes>
+          {/* <Route
+            path="/ducks"
+            element={
+              <ProtectedRoute >
+                <Ducks />
+              </ProtectedRoute>
+            }
+          /> */}
+          <Route
+            path="/"
+            element={
+              <Main 
+              onEditProfileClick={handleEditProfileClick}
+              onAddPlaceClick={handleAddPlaceClick}
+              onEditAvatarClick={handleEditAvatarClick}
+              onDeleteCardClick={handleDeleteCardClick}
+              isEditProfilePopupOpen={isEditProfilePopupOpen}
+              isAddPlacePopupOpen={isAddPlacePopupOpen}
+              isEditAvatarPopupOpen={isEditAvatarPopupOpen}
+              isDeleteCardPopupOpen={isDeleteCardPopupOpen}
+              selectedCard={selectedCard}
+              onClose={closeAllPopups}
+              onCardClick={handleCardClick}
+              cards={cards}
+              onCardLike={handleCardLike}
+              onCardDelete={handleCardDelete}
+              onAddPlaceSubmit={handleAddPlaceSubmit}
+              ></Main>
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              <Login></Login>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <Register></Register>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              isLoggedIn ? (
+                <Navigate to="/" replace />
+              ) : (
+                <Navigate to="/signin" replace />
+              )
+            }
+          />
+        </Routes>
       </CurrentUserContext.Provider>
     </div>
   );

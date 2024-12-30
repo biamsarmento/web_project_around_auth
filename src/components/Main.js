@@ -7,6 +7,8 @@ import EditProfile from './EditProfile';
 import EditAvatar from './EditAvatar';
 import NewCard from './NewCard';
 import CurrentUserContext from '../contexts/CurrentUserContext';
+import Header from './Header';
+import Footer from './Footer';
 
 
 function Main(props) {
@@ -14,6 +16,8 @@ function Main(props) {
     const {currentUser} = React.useContext(CurrentUserContext);
 
     return (
+        <>
+        <Header/>
         <main className="content">
             
             <PopupWithForm title="Editar Perfil" name="profile-popup" isOpen={props.isEditProfilePopupOpen} onClose={props.onClose}>
@@ -60,6 +64,8 @@ function Main(props) {
             })}
             </section>
         </main>
+        <Footer/>
+        </>
     )
 }
 

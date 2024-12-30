@@ -1,10 +1,54 @@
 import logo from '../images/Vector.svg';
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import CurrentUserContext from '../contexts/CurrentUserContext';
 import { useContext } from 'react';
 
 function Header() {
 
-    const currentUser = useContext(CurrentUserContext);
+    const { currentUser, isLoggedIn, setIsLoggedIn } = useContext(CurrentUserContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    function signOut() {
+        // removeToken();
+        navigate("/signin");
+        setIsLoggedIn(false);
+    }
+
+    const renderNav = () => {
+        // if (isLoggedIn) {
+        //     return (
+        //         <div className='nav__logged-in'>
+        //             <p className='nav__logged-in__email'>{currentUser.name}</p>
+        //             <button className='nav__logged-in__sair' onClick={signOut}>Sair</button>
+        //         </div>
+        //     );
+        // }
+        
+        if (location.pathname === '/signup') {
+            return (
+                <div className='nav__signup'>
+                    <button className='nav__button'>Faça o Login</button>
+                </div>
+            );
+        } else if (location.pathname === '/signin') {
+            return (
+                <div className='nav__signin'>
+                    <button className='nav__button'>Entrar</button>
+                </div>
+            );
+        } else {
+            return (
+                <div className='nav__logged-in'>
+                    <p className='nav__logged-in__email'>{currentUser.name}</p>
+                    <button className='nav__logged-in__sair' onClick={signOut}>Sair</button>
+                </div>
+            );
+        }
+        
+        return null; // Caso não seja nenhuma das condições anteriores
+    };
+
 
     return (
         <header className="header">
@@ -17,10 +61,7 @@ function Header() {
                     className="nav__logo"
                 /> 
                 </a>
-                <div className='nav__logged-in'>
-                    <p className='nav__logged-in__email'>{currentUser.currentUser.name}</p>
-                    <p className='nav__logged-in__sair'>Sair</p>
-                </div>
+                {renderNav()}
             </nav>
             <div className="header__line"></div>
             </div>
