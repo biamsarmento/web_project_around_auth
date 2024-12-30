@@ -15,6 +15,7 @@ function App() {
   const [isDeleteCardPopupOpen, setDeleteCardPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState('');
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
   React.useEffect(() => {
     (async () => {
@@ -111,7 +112,7 @@ function App() {
 
   return (
     <div className="page">
-      <CurrentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar}}>
+      <CurrentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar, isLoggedIn, setIsLoggedIn}}>
         <Header></Header>
         <Main 
           onEditProfileClick={handleEditProfileClick}

@@ -1,6 +1,6 @@
 .nav {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   box-sizing: border-box;
   position: relative;
 }
@@ -13,6 +13,37 @@
 .nav__logo {
   box-sizing: border-box;
   cursor: pointer;
+}
+
+.nav__logged-in {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 56px;
+}
+
+.nav__logged-in__email {
+  color: white;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  text-align: right; 
+  text-underline-position: from-font;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__logged-in__sair {
+  color: #A9A9A9;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: right;
+  margin: 0;
+  padding: 0;
 }
 
 @media (min-width: 320px){
