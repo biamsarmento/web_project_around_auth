@@ -1,7 +1,5 @@
 import { Routes, Route, Navigate, useNavigate, useLocation } from "react-router-dom";
-import Header from './components/Header';
 import Main from './components/Main';
-import Footer from './components/Footer';
 import Login from './components/Login';
 import Register from './components/Register';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -23,9 +21,6 @@ function App() {
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState('');
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  // const [successPopup, setSucessPopup] = React.useState(false);
-  const [isLoginSuccess, setIsLoginSucess] = React.useState(false);
-  // const [failPopup, setFailPopup] = React.useState(false);
   const [userData, setUserData] = React.useState({ email: "" });
   const navigate = useNavigate();
   const location = useLocation();
@@ -153,42 +148,36 @@ function App() {
 
   const handleLogin = ({ email, password }) => {
     if (!email || !password) {
-      setIsLoginPopupOpen(true);
       return;
     }
-
-    // setIsLoginPopupOpen(true);
 
     auth
       .authorize(password, email)
       .then((data) => {
         if (data.token) {
+          setIsLoggedIn(true);
           setToken(data.token);
           auth 
             .retrieveEmail(data.token)
             .then((data) => {
               setUserData({email: data.data.email});
-              setIsLoggedIn(true);
-              // setIsLoginSucess(true);
-              setIsLoginPopupOpen(true);
               const redirectPath = location.state?.from?.pathname || "/";
               navigate(redirectPath);
             })
-            .catch(console.error)
-
-              setIsLoginPopupOpen(true);
+            .catch(console.error);
+      
         }
       })
-      .catch(console.error);
-        setIsLoginPopupOpen(true);
-
-    // setIsLoginPopupOpen(true);
-
+      .catch((error) => {
+        if (error == "Error: 401") {
+          setIsLoginPopupOpen(true); 
+        }
+      });
   };
 
   return (
     <div className="page">
-      <CurrentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar, isLoggedIn, setIsLoggedIn, userData, isLoginSuccess, setIsLoginSucess}}>
+      <CurrentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar, isLoggedIn, setIsLoggedIn, userData}}>
         <Routes>
           <Route
             path="/"
@@ -203,7 +192,6 @@ function App() {
                 isAddPlacePopupOpen={isAddPlacePopupOpen}
                 isEditAvatarPopupOpen={isEditAvatarPopupOpen}
                 isDeleteCardPopupOpen={isDeleteCardPopupOpen}
-                isLoginPopupOpen={isLoginPopupOpen}
                 selectedCard={selectedCard}
                 onClose={closeAllPopups}
                 onCardClick={handleCardClick}
@@ -219,7 +207,7 @@ function App() {
           <Route
             path="/signin"
             element={
-              <Login handleLogin={handleLogin} isLoginPopupOpen={isLoginPopupOpen} setIsLoginPopupOpen={setIsLoginPopupOpen} onClose={closeAllPopups} ></Login>
+              <Login handleLogin={handleLogin} isLoginPopupOpen={isLoginPopupOpen} onClose={closeAllPopups} ></Login>
             }
           />
           <Route

@@ -1,14 +1,10 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import PopupWithForm from "./PopupWithForm";
 import InfoTooltip from "./InfoTooltip";
-import CurrentUserContext from "../contexts/CurrentUserContext";
 import Header from "./Header";
 
 
-function Login({handleLogin, isLoginPopupOpen, setIsLoginPopupOpen, onClose}) {
-
-    const {isLoginSuccess, isLoggedIn} = useContext(CurrentUserContext);
+function Login({handleLogin, isLoginPopupOpen, onClose}) {
 
     const [data, setData] = useState({
         email: "",
@@ -32,7 +28,7 @@ function Login({handleLogin, isLoginPopupOpen, setIsLoginPopupOpen, onClose}) {
     function renderLoginPopup() {
         if (isLoginPopupOpen) {
             return (
-                <InfoTooltip isOpen={isLoginPopupOpen} onClose={onClose}></InfoTooltip>
+                <InfoTooltip isLoginPopupOpen={isLoginPopupOpen} onClose={onClose}></InfoTooltip>
             )
         }
     }
@@ -78,8 +74,7 @@ function Login({handleLogin, isLoginPopupOpen, setIsLoginPopupOpen, onClose}) {
                     Ainda não é membro? Inscreva-se aqui!
                 </Link>
             </div>
-            {renderLoginPopup()}
-            {/* <InfoTooltip isOpen={isLoginPopupOpen} onClose={onClose}></InfoTooltip> */}
+            {isLoginPopupOpen && renderLoginPopup()}
         </section>
         </>
     )

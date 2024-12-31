@@ -1,8 +1,8 @@
 import logo from '../images/Vector.svg';
-import { NavLink, useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import CurrentUserContext from '../contexts/CurrentUserContext';
 import { useContext } from 'react';
-import { getToken, removeToken } from '../utils/token';
+import { removeToken } from '../utils/token';
 
 function Header() {
 
