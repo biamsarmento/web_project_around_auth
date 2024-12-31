@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/web_project_around_react_auth/static/css/main.0a7c5b67.css",
-    "main.js": "/web_project_around_react_auth/static/js/main.91d7b3a0.js",
-    "static/js/453.f8fedbbc.chunk.js": "/web_project_around_react_auth/static/js/453.f8fedbbc.chunk.js",
-    "static/media/InterVariable-Italic.woff2": "/web_project_around_react_auth/static/media/InterVariable-Italic.e295f70fe3e2df296c7b.woff2",
-    "static/media/InterVariable.woff2": "/web_project_around_react_auth/static/media/InterVariable.a0e477f2f1f9d2376fde.woff2",
-    "static/media/Vector.svg": "/web_project_around_react_auth/static/media/Vector.4e8e0a1d604782a0dff8e5b1a5441e4d.svg",
-    "static/media/Like.svg": "/web_project_around_react_auth/static/media/Like.3826c074a1b94b101e38.svg",
-    "index.html": "/web_project_around_react_auth/index.html",
-    "static/media/Trash.svg": "/web_project_around_react_auth/static/media/Trash.8cb59aa98088a1653f62.svg",
-    "static/media/CloseIcon.svg": "/web_project_around_react_auth/static/media/CloseIcon.910c81e7387e24f6f846.svg",
-    "static/media/AddButton.svg": "/web_project_around_react_auth/static/media/AddButton.6f41966c71dd7895857f.svg",
-    "static/media/EditButton.svg": "/web_project_around_react_auth/static/media/EditButton.a1892ea72cb87c8fc3aa.svg",
-    "main.0a7c5b67.css.map": "/web_project_around_react_auth/static/css/main.0a7c5b67.css.map",
-    "main.91d7b3a0.js.map": "/web_project_around_react_auth/static/js/main.91d7b3a0.js.map",
-    "453.f8fedbbc.chunk.js.map": "/web_project_around_react_auth/static/js/453.f8fedbbc.chunk.js.map"
+    "main.css": "/web_project_around_auth/static/css/main.a5083af9.css",
+    "main.js": "/web_project_around_auth/static/js/main.d3e25381.js",
+    "static/js/453.f8fedbbc.chunk.js": "/web_project_around_auth/static/js/453.f8fedbbc.chunk.js",
+    "static/media/InterVariable-Italic.woff2": "/web_project_around_auth/static/media/InterVariable-Italic.e295f70fe3e2df296c7b.woff2",
+    "static/media/InterVariable.woff2": "/web_project_around_auth/static/media/InterVariable.a0e477f2f1f9d2376fde.woff2",
+    "static/media/Vector.svg": "/web_project_around_auth/static/media/Vector.4e8e0a1d604782a0dff8e5b1a5441e4d.svg",
+    "static/media/Like.svg": "/web_project_around_auth/static/media/Like.3826c074a1b94b101e38.svg",
+    "index.html": "/web_project_around_auth/index.html",
+    "static/media/Trash.svg": "/web_project_around_auth/static/media/Trash.8cb59aa98088a1653f62.svg",
+    "static/media/CloseIcon.svg": "/web_project_around_auth/static/media/CloseIcon.910c81e7387e24f6f846.svg",
+    "static/media/AddButton.svg": "/web_project_around_auth/static/media/AddButton.6f41966c71dd7895857f.svg",
+    "static/media/EditButton.svg": "/web_project_around_auth/static/media/EditButton.a1892ea72cb87c8fc3aa.svg",
+    "main.a5083af9.css.map": "/web_project_around_auth/static/css/main.a5083af9.css.map",
+    "main.d3e25381.js.map": "/web_project_around_auth/static/js/main.d3e25381.js.map",
+    "453.f8fedbbc.chunk.js.map": "/web_project_around_auth/static/js/453.f8fedbbc.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0a7c5b67.css",
-    "static/js/main.91d7b3a0.js"
+    "static/css/main.a5083af9.css",
+    "static/js/main.d3e25381.js"
   ]
 }
