@@ -14,4 +14,4 @@ Na Sprint 14 aprofundamos nosso conhecimento em JavaScript e React. Aprendemos a
 
 Na Sprint 17 reutilizamos o código da Sprint 13 e 14, aprimorando-o com autenticação, rotas protegidas e localStorage. Após essas modificações o projeto completo permite que os usuários criem uma conta, se já não tivemre, loguem na sua conta e acessem o seu perfil. Se não estiverem logados não conseguirão acessar nada além das telas de login e de registro. Uma vez logados o localStorage é acionado, armazenando o token para que o usuário possa entrar novamente sem ter que fazer login.
 
-Link para o projeto: https://biamsarmento.github.io/web_project_around_react/
+Link para o projeto: https://biamsarmento.github.io/web_project_around_auth
