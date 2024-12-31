@@ -19,9 +19,13 @@ function App() {
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
   const [isDeleteCardPopupOpen, setDeleteCardPopupOpen] = React.useState(false);
+  const [isLoginPopupOpen, setIsLoginPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState('');
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  // const [successPopup, setSucessPopup] = React.useState(false);
+  const [isLoginSuccess, setIsLoginSucess] = React.useState(false);
+  // const [failPopup, setFailPopup] = React.useState(false);
   const [userData, setUserData] = React.useState({ email: "" });
   const navigate = useNavigate();
   const location = useLocation();
@@ -46,7 +50,6 @@ function App() {
 
       const token = getToken();
       if (!token) {
-        console.log("Sem token");
         return;
       } else if(token) {
         auth
@@ -132,6 +135,7 @@ function App() {
     setAddPlacePopupOpen(false);
     setEditAvatarPopupOpen(false);
     setDeleteCardPopupOpen(false);
+    setIsLoginPopupOpen(false);
   }
 
   const handleRegistration = ({
@@ -149,8 +153,11 @@ function App() {
 
   const handleLogin = ({ email, password }) => {
     if (!email || !password) {
+      setIsLoginPopupOpen(true);
       return;
     }
+
+    // setIsLoginPopupOpen(true);
 
     auth
       .authorize(password, email)
@@ -162,17 +169,26 @@ function App() {
             .then((data) => {
               setUserData({email: data.data.email});
               setIsLoggedIn(true);
+              // setIsLoginSucess(true);
+              setIsLoginPopupOpen(true);
               const redirectPath = location.state?.from?.pathname || "/";
               navigate(redirectPath);
             })
+            .catch(console.error)
+
+              setIsLoginPopupOpen(true);
         }
       })
       .catch(console.error);
+        setIsLoginPopupOpen(true);
+
+    // setIsLoginPopupOpen(true);
+
   };
 
   return (
     <div className="page">
-      <CurrentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar, isLoggedIn, setIsLoggedIn, userData}}>
+      <CurrentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar, isLoggedIn, setIsLoggedIn, userData, isLoginSuccess, setIsLoginSucess}}>
         <Routes>
           <Route
             path="/"
@@ -187,6 +203,7 @@ function App() {
                 isAddPlacePopupOpen={isAddPlacePopupOpen}
                 isEditAvatarPopupOpen={isEditAvatarPopupOpen}
                 isDeleteCardPopupOpen={isDeleteCardPopupOpen}
+                isLoginPopupOpen={isLoginPopupOpen}
                 selectedCard={selectedCard}
                 onClose={closeAllPopups}
                 onCardClick={handleCardClick}
@@ -202,7 +219,7 @@ function App() {
           <Route
             path="/signin"
             element={
-              <Login handleLogin={handleLogin}></Login>
+              <Login handleLogin={handleLogin} isLoginPopupOpen={isLoginPopupOpen} setIsLoginPopupOpen={setIsLoginPopupOpen} onClose={closeAllPopups} ></Login>
             }
           />
           <Route

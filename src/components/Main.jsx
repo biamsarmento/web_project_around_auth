@@ -9,17 +9,26 @@ import NewCard from './NewCard';
 import CurrentUserContext from '../contexts/CurrentUserContext';
 import Header from './Header';
 import Footer from './Footer';
+import InfoTooltip from './InfoTooltip';
 
 
 function Main(props) {
 
-    const {currentUser} = React.useContext(CurrentUserContext);
+    const {currentUser, isLoginSuccess} = React.useContext(CurrentUserContext);
+
+    function renderLoginPopup() {
+        if (props.isLoginPopupOpen) {
+            return (
+                <InfoTooltip isOpen={props.isLoginPopupOpen} onClose={props.onClose}></InfoTooltip>
+            )
+        }
+    }
 
     return (
         <>
         <Header/>
         <main className="content">
-            
+            {renderLoginPopup()}
             <PopupWithForm title="Editar Perfil" name="profile-popup" isOpen={props.isEditProfilePopupOpen} onClose={props.onClose}>
                 <EditProfile onClose={props.onClose}></EditProfile>
             </PopupWithForm> 

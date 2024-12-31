@@ -6,16 +6,9 @@ import CurrentUserContext from "../contexts/CurrentUserContext";
 import Header from "./Header";
 
 
-function Login({handleLogin}) {
+function Login({handleLogin, isLoginPopupOpen, setIsLoginPopupOpen, onClose}) {
 
-    const { isLoggedIn } = useContext(CurrentUserContext);
-
-    // function handleSubmit() {
-    //     console.log("Usuário Registrado!");
-    //     return (
-    //         <InfoTooltip></InfoTooltip>
-    //     )
-    // }
+    const {isLoginSuccess, isLoggedIn} = useContext(CurrentUserContext);
 
     const [data, setData] = useState({
         email: "",
@@ -33,7 +26,16 @@ function Login({handleLogin}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         handleLogin(data);
+        // setIsLoginPopupOpen(true);
     };
+
+    function renderLoginPopup() {
+        if (isLoginPopupOpen) {
+            return (
+                <InfoTooltip isOpen={isLoginPopupOpen} onClose={onClose}></InfoTooltip>
+            )
+        }
+    }
 
     return (
         <>
@@ -76,7 +78,8 @@ function Login({handleLogin}) {
                     Ainda não é membro? Inscreva-se aqui!
                 </Link>
             </div>
-            <InfoTooltip></InfoTooltip>
+            {renderLoginPopup()}
+            {/* <InfoTooltip isOpen={isLoginPopupOpen} onClose={onClose}></InfoTooltip> */}
         </section>
         </>
     )
