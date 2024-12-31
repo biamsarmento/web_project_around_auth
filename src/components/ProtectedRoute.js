@@ -1,4 +1,4 @@
-import { useContext } from "react"; // Nova importação
+import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 
@@ -18,7 +18,7 @@ export default function ProtectedRoute({
   }
 
   if (!anonymous && !isLoggedIn) {
-    return <Navigate to="/login" state={{ from: location }} />;
+    return <Navigate to="/signin" state={{ from: location }} />;
   }
 
   return children;

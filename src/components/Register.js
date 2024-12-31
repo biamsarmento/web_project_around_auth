@@ -1,15 +1,28 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import CurrentUserContext from "../contexts/CurrentUserContext";
 import Header from "./Header";
 
-function Register() {
+function Register({handleRegistration}) {
 
-    const { isLoggedIn } = useContext(CurrentUserContext);
-
-    function handleSubmit() {
-        console.log("Usuário Registrado!");
-    }
+    const [data, setData] = useState({
+        email: "",
+        password: ""
+      });
+    
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setData((prevData) => ({
+          ...prevData,
+          [name]: value,
+        }));
+      };
+    
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(data);
+        handleRegistration(data);
+      };
 
     return (
         <>
@@ -20,15 +33,15 @@ function Register() {
                 <form className="register__form form" name="register__form" id="register__form" onSubmit={handleSubmit}>
                 <fieldset className="form__fieldset">
                     <input 
-                    type="url" 
+                    type="email" 
                     className="form__input form__input_type_email" 
                     id="email" 
                     name="email"
                     minLength="2" 
                     maxLength="40" 
                     placeholder="E-mail"
-                    // value={name} 
-                    // onChange={handleNameChange} 
+                    value={data.email} 
+                    onChange={handleChange} 
                     required />
                     <span className="form__input-error nome-error"></span>
                     <input 
@@ -39,8 +52,8 @@ function Register() {
                     minLength="2" 
                     maxLength="200"
                     placeholder="Senha"
-                    // value={description} 
-                    // onChange={handleDescriptionChange} 
+                    value={data.password} 
+                    onChange={handleChange} 
                     required />
                     <span className="form__input-error atividade-error"></span>
                     <button type="submit" className="form__submit-button__register">Inscrever-se</button>
