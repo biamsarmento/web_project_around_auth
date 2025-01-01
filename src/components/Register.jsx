@@ -1,9 +1,11 @@
-import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import CurrentUserContext from "../contexts/CurrentUserContext";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import InfoTooltip from "./InfoTooltip";
 import Header from "./Header";
 
-function Register({handleRegistration}) {
+function Register({handleRegistration, isLoginPopupOpen, onClose, errorRegistration}) {
+
+    const navigate = useNavigate();
 
     const [data, setData] = useState({
         email: "",
@@ -20,9 +22,17 @@ function Register({handleRegistration}) {
     
       const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(data);
         handleRegistration(data);
+        // navigate('/signin');
       };
+
+      function renderLoginPopup() {
+        if (isLoginPopupOpen) {
+            return (
+                <InfoTooltip isLoginPopupOpen={isLoginPopupOpen} onClose={onClose} errorRegistration={errorRegistration}></InfoTooltip>
+            )
+        }
+    }
 
     return (
         <>
@@ -65,6 +75,7 @@ function Register({handleRegistration}) {
                     Já é um membro? Faça o login aqui!
                 </Link>
             </div>
+            {isLoginPopupOpen && renderLoginPopup()}
         </section>
         </>
     )

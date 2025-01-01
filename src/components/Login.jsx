@@ -4,7 +4,7 @@ import InfoTooltip from "./InfoTooltip";
 import Header from "./Header";
 
 
-function Login({handleLogin, isLoginPopupOpen, onClose}) {
+function Login({handleLogin, isLoginPopupOpen, onClose, errorRegistration}) {
 
     const [data, setData] = useState({
         email: "",
@@ -22,13 +22,12 @@ function Login({handleLogin, isLoginPopupOpen, onClose}) {
     const handleSubmit = (e) => {
         e.preventDefault();
         handleLogin(data);
-        // setIsLoginPopupOpen(true);
     };
 
     function renderLoginPopup() {
         if (isLoginPopupOpen) {
             return (
-                <InfoTooltip isLoginPopupOpen={isLoginPopupOpen} onClose={onClose}></InfoTooltip>
+                <InfoTooltip isLoginPopupOpen={isLoginPopupOpen} onClose={onClose} errorRegistration={errorRegistration}></InfoTooltip>
             )
         }
     }

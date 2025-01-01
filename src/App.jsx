@@ -18,6 +18,7 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = React.useState(false);
   const [isDeleteCardPopupOpen, setDeleteCardPopupOpen] = React.useState(false);
   const [isLoginPopupOpen, setIsLoginPopupOpen] = React.useState(false);
+  const [errorRegistration, setErrorRegistration] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState('');
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
@@ -131,6 +132,7 @@ function App() {
     setEditAvatarPopupOpen(false);
     setDeleteCardPopupOpen(false);
     setIsLoginPopupOpen(false);
+    setErrorRegistration(false);
   }
 
   const handleRegistration = ({
@@ -141,9 +143,15 @@ function App() {
     auth
       .register(password, email)
       .then(() => {
-        navigate("/signin");
+        setIsLoginPopupOpen(true); 
+        // navigate("/signin");
       })
-      .catch(console.error);
+      .catch((error) => {
+        if (error === "Error: 400") {
+          setIsLoginPopupOpen(true); 
+          setErrorRegistration(true);
+        }
+      });
   };
 
   const handleLogin = ({ email, password }) => {
@@ -169,7 +177,7 @@ function App() {
         }
       })
       .catch((error) => {
-        if (error == "Error: 401") {
+        if (error === "Error: 401") {
           setIsLoginPopupOpen(true); 
         }
       });
@@ -207,13 +215,13 @@ function App() {
           <Route
             path="/signin"
             element={
-              <Login handleLogin={handleLogin} isLoginPopupOpen={isLoginPopupOpen} onClose={closeAllPopups} ></Login>
+              <Login handleLogin={handleLogin} isLoginPopupOpen={isLoginPopupOpen} onClose={closeAllPopups} errorRegistration={errorRegistration} ></Login>
             }
           />
           <Route
             path="/signup"
             element={
-              <Register handleRegistration={handleRegistration}></Register>
+              <Register handleRegistration={handleRegistration} isLoginPopupOpen={isLoginPopupOpen} onClose={closeAllPopups} errorRegistration={errorRegistration}></Register>
             }
           />
           <Route
