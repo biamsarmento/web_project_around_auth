@@ -41,7 +41,7 @@ export const retrieveEmail = (token) => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
+        "Authorization": `Bearer ${token}`,
       },
       // Os parâmetros são envolvidos em um objeto, convertidos em uma string
       // JSON e enviados no body da solicitação.

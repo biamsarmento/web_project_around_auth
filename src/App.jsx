@@ -144,13 +144,10 @@ function App() {
       .register(password, email)
       .then(() => {
         setIsLoginPopupOpen(true); 
-        // navigate("/signin");
       })
       .catch((error) => {
-        if (error === "Error: 400") {
-          setIsLoginPopupOpen(true); 
-          setErrorRegistration(true);
-        }
+        setIsLoginPopupOpen(true); 
+        setErrorRegistration(true);
       });
   };
 
@@ -177,9 +174,7 @@ function App() {
         }
       })
       .catch((error) => {
-        if (error === "Error: 401") {
-          setIsLoginPopupOpen(true); 
-        }
+        setIsLoginPopupOpen(true); 
       });
   };
 

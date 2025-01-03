@@ -67,7 +67,9 @@ const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/web-ptbr-cohort-13",
   headers: {
       authorization: "4fe5fb1a-9a42-4631-9f7e-39eb49951a0f",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "https://around.nomoreparties.co/v1/web-ptbr-cohort-13"
+
   }
 });
 
