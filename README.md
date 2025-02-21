@@ -1,17 +1,52 @@
-# Triple Ten
-# Web Project Around Auth
+# 🔐 Project Around Auth
 
-Esse site mostra um perfil de um usuário e mostra fotos postadas por este. Existe uma seção "profile" 
-que mostra o nome e uma descrição do usuário com um botão para editar o perfil e existe uma seção com as fotos postadas pelo usuário. 
-Em cada post há um texto e um botão de like, que ao ser clicado fica preenchido.
-Também podemos acrescentar e deletar fotos ná página clicando no botão + e no lixo, respectivamente.
-Foi acrescentada, também, a funcionalidade de fechar os popup clicando fora dele ou então apertando em Esc.
-Os formulários agora passam por uma validação e o botão "Salvar" so funciona quando tudo está válido.
-Agora esse projeto foi devidamente organizado e classes foram criadas após aprendermos POO.
-Em uma etapa anterior do projeto passamos a consumir uma API para salvar algumas coisas. Conseguimos usar o banco de dados através de requests feitos com um token individual. Aprendemos a interpretar o status de um request assim como o objeto que recebemos como resposta.
-Na Sprint 13 reestruturamos o projeto utilizando React! Aprendemos a utilizar componentes e a criar um projeto em React do zero! 
-Na Sprint 14 aprofundamos nosso conhecimento em JavaScript e React. Aprendemos a usar contexto para possibilitar que as diferentes partes do código tivessem acesso a mesma informação, mesmo se ela mudar, e também aprendemos Refs, uma forma de obter dados do usuário.
+## 📖 About the Project
 
-Na Sprint 17 reutilizamos o código da Sprint 13 e 14, aprimorando-o com autenticação, rotas protegidas e localStorage. Após essas modificações o projeto completo permite que os usuários criem uma conta, se já não tivemre, loguem na sua conta e acessem o seu perfil. Se não estiverem logados não conseguirão acessar nada além das telas de login e de registro. Uma vez logados o localStorage é acionado, armazenando o token para que o usuário possa entrar novamente sem ter que fazer login.
+**Around Auth** is an interactive photo-sharing platform with **user authentication**. Users can **create accounts, log in, and manage their profiles**, including posting and interacting with photos.
 
-Link para o projeto: https://biamsarmento.github.io/web_project_around_auth
+### Features:
+- **User Authentication**: Users can **register, log in, and log out** securely.  
+- **Protected Routes**: Only authenticated users can access the main application.  
+- **LocalStorage Token Storage**: Ensures users stay logged in even after refreshing the page.  
+- **Profile Management**: Users can edit their **name and description**.  
+- **Photo Gallery**: Users can **add, delete, and like** posts. Likes are highlighted when activated.  
+- **Pop-ups**: Can be closed by clicking outside or pressing the **Esc key**.  
+- **Form Validation**: The "Save" button is enabled only when all fields are valid.  
+- **React & State Management**: Components are structured using **React**, with **Context API** for shared data and **Refs** for handling user input.  
+- **API Integration**: The project communicates with a **database-backed API**, handling authentication and user data securely.  
+
+## 🎯 Objective
+
+The goal of this project was to integrate **authentication** into a **React-based** photo-sharing platform, reinforcing knowledge of **protected routes, token storage, and API communication**. The focus was on improving security and enhancing the user experience.
+
+## 🚀 Outcome
+
+The application now supports **user registration, authentication, and protected content access**. Users can log in once and remain authenticated through **LocalStorage token storage**.
+
+Check out the final result:  
+- 🌎 **Live Website**: [Around Auth](https://biamsarmento.github.io/web_project_around_auth/)  
+
+## 🛠️ Technologies and Tools Used
+
+- React.js  
+- Node.js  
+- Express.js  
+- MongoDB & Mongoose  
+- JWT (JSON Web Token) for authentication  
+- LocalStorage for token management  
+
+## 📚 What I Learned
+
+This project reinforced key concepts in **full-stack development**, including:
+- **User authentication & protected routes**  
+- **Handling tokens and secure API requests**  
+- **Using React’s Context API for state management**  
+- **Implementing LocalStorage for persistent login sessions**  
+- **Validating forms and managing user input with Refs**  
+
+## 🔧 How to Run the Project
+
+### 📦 Cloning the Repository
+```bash
+git clone https://github.com/biamsarmento/web_project_around_auth.git
+cd web_project_around_auth
